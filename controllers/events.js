@@ -18,10 +18,12 @@ var getAllEvents = async (req, res) => {
 var addEvent = async (req, res) => {
 	let event;
 	try{
-		event = await Event.create(req.body, {
-			attributes: ['id', 'type', 'created_at'],
-			include: [{ all: true }]
-		});
+		event = await Event.create(
+			req.body, 
+			{
+				attributes: ['id', 'type', 'created_at'],
+				include: [{ all: true }]
+			});
 	} catch(e) {
 		return handleResponse(res);
 	}
